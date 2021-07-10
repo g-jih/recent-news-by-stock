@@ -45,20 +45,15 @@
                                         관심종목
                                     </div>
                                     <div class="card-body">
-                                        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" placeholder="종목 검색" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                                                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                                            </div>
-                                        </form>
+                                        <select class="form-select" th:name="saveStock">
+                                            <option selected>관심종목 추가</option>
+                                            <option th:each="stock: ${stocks}" th:value="${stock.code}" th:text="${stock.name}"/>
+                                        </select>
+                                        <select class="form-select" multiple th:name="savedStock.name" >
+                                            <option th:each="savedStock: ${savedStocks}" th:value="${savedStock.name}"
+                                                    th:text="${savedStock.name}"/>
+                                        </select>
                                     </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item active">삼성전자</li>
-                                        <li class="list-group-item">카카오</li>
-                                        <li class="list-group-item">크래프톤</li>
-                                        <li class="list-group-item">네이버</li>
-                                        <li class="list-group-item">넥슨</li>
-                                    </ul>
                                 </div>
                             </div>
                             <div class="col-xl-9">
@@ -71,7 +66,7 @@
                                        <!--<p th:text="${newsList}"></p>-->
                                         <table class="table table-striped">
                                             <tbody>
-                                            <tr th:each="news: ${newsList}">
+                                            <tr th:each="news: ${newsList}" th:if="${newsList != null}">
                                                 <td class="card">
                                                     <div class="card-body">
                                                         <a class="link-dark" th:href="${news.originallink}" target="_blank">
@@ -84,7 +79,7 @@
                                                                 <i class="fas fa-external-link-alt"></i>
                                                             </a>
                                                         </p>
-                                                    </p>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             </tbody>
