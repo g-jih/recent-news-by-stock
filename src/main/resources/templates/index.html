@@ -72,19 +72,19 @@
                                         <table class="table table-striped">
                                             <tbody>
                                             <tr th:each="news: ${newsList}">
-                                                <td>
-                                                    <a th:href="${news.originallink}" target="_blank">
-                                                        <div th:utext="${news.title}"/>
-                                                    </a>
-                                                    <div th:utext="${news.description}">
-                                                        <a th:href="${news.originallink}" target="_blank">
-                                                            <i class="fas fa-external-link-alt"></i>
+                                                <td class="card">
+                                                    <div class="card-body">
+                                                        <a class="link-dark" th:href="${news.originallink}" target="_blank">
+                                                        <h5 class="card-title" th:utext="${news.title}"/>
                                                         </a>
-                                                    </div>
-                                                    <div>
-                                                        <span>등록 시간: </span>
-                                                        <span th:text="${news.pubDate}"/>
-                                                    </div>
+                                                        <p class="card-text" th:utext="${news.description}"/p>
+                                                        <p class="card-text">
+                                                            등록 시간: <span th:text="${news.pubDate}"/>
+                                                            <a class="link-info" th:href="${news.originallink}" target="_blank">
+                                                                <i class="fas fa-external-link-alt"></i>
+                                                            </a>
+                                                        </p>
+                                                    </p>
                                                 </td>
                                             </tr>
                                             </tbody>

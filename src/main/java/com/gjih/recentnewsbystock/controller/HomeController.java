@@ -17,9 +17,18 @@ public class HomeController {
 
     @GetMapping("/")
     public String main(Model model) {
+
+        // 뉴스 정보 보내기
         ApiDTO apiResponse = newsService.getNews("삼성전자");
         List<NewsForm> newsList = apiResponse.getItems();
         model.addAttribute("newsList", newsList);
+
+        // 코스피 정보 보내기
+        
+
+        // 코스닥 정보 보내기
+
+
         return "index";
     }
 }
