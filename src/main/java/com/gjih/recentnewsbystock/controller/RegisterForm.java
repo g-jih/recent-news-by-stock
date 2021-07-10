@@ -1,4 +1,4 @@
-package com.gjih.recentnewsbystock;
+package com.gjih.recentnewsbystock.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

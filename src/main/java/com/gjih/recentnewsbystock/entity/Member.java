@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Member {
 
     @Id @GeneratedValue

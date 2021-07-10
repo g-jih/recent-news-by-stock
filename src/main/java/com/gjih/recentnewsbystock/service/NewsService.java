@@ -1,5 +1,7 @@
 package com.gjih.recentnewsbystock.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gjih.recentnewsbystock.controller.ApiDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ public class NewsService {
     @Value("${external.api.password}")
     private String apiPassword;
 
-    public String getNews(String keyword) {
+    public ApiDTO getNews(String keyword) {
 
         try {
             keyword = URLEncoder.encode(keyword, "UTF-8");
@@ -41,7 +43,15 @@ public class NewsService {
         requestHeaders.put("X-Naver-Client-Secret", apiPassword);
         String responseBody = get(apiURL,requestHeaders);
 
-        return responseBody;
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            ApiDTO apiResponse = objectMapper.readValue(responseBody, ApiDTO.class);
+            return apiResponse;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private String get(String apiUrl, Map<String, String> requestHeaders){

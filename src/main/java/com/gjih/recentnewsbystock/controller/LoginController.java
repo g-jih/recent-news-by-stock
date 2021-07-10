@@ -1,6 +1,5 @@
 package com.gjih.recentnewsbystock.controller;
 
-import com.gjih.recentnewsbystock.RegisterForm;
 import com.gjih.recentnewsbystock.entity.Member;
 import com.gjih.recentnewsbystock.service.MemberService;
 import lombok.RequiredArgsConstructor;
