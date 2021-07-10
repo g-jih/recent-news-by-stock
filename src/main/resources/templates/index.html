@@ -15,15 +15,8 @@
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="/">관심 종목별 최근 뉴스 모아보기</a>
-            <!-- Navbar Search-->
-            <!--<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>-->
             <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <ul class="navbar-nav ms-auto me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -37,26 +30,27 @@
             <dqiv id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <div class="row">
-                            <div class="col-xl-2">
+                        <div class="row mt-5">
+                            <div class="col-xl-4">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fa fa-check-square me-1"></i>
                                         관심종목
                                     </div>
                                     <div class="card-body">
-                                        <select class="form-select" th:name="saveStock">
+                                        <select class="form-select mb-1" th:name="saveStock">
                                             <option selected>관심종목 추가</option>
                                             <option th:each="stock: ${stocks}" th:value="${stock.code}" th:text="${stock.name}"/>
                                         </select>
-                                        <select class="form-select" multiple th:name="savedStock.name" >
+                                        <hr class="dropdown-divider" />
+                                        <select class="form-select mt-1" multiple th:name="savedStock.name" >
                                             <option th:each="savedStock: ${savedStocks}" th:value="${savedStock.name}"
                                                     th:text="${savedStock.name}"/>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-9">
+                            <div class="col-xl-7">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area me-1"></i>
@@ -67,19 +61,17 @@
                                         <table class="table table-striped">
                                             <tbody>
                                             <tr th:each="news: ${newsList}" th:if="${newsList != null}">
-                                                <td class="card">
-                                                    <div class="card-body">
-                                                        <a class="link-dark" th:href="${news.originallink}" target="_blank">
-                                                        <h5 class="card-title" th:utext="${news.title}"/>
+                                                <td>
+                                                    <a class="link-dark" th:href="${news.originallink}" target="_blank">
+                                                        <h5 class="text-decoration-underline" th:utext="${news.title}"/>
+                                                    </a>
+                                                    <p class="text-body" th:utext="${news.description}"/p>
+                                                    <p class="text-muted">
+                                                        등록 시간: <span th:text="${news.pubDate}"/>
+                                                        <a class="link-info" th:href="${news.originallink}" target="_blank">
+                                                            <i class="fas fa-external-link-alt"></i>
                                                         </a>
-                                                        <p class="card-text" th:utext="${news.description}"/p>
-                                                        <p class="card-text">
-                                                            등록 시간: <span th:text="${news.pubDate}"/>
-                                                            <a class="link-info" th:href="${news.originallink}" target="_blank">
-                                                                <i class="fas fa-external-link-alt"></i>
-                                                            </a>
-                                                        </p>
-                                                    </div>
+                                                    </p>
                                                 </td>
                                             </tr>
                                             </tbody>
