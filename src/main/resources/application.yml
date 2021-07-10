@@ -1,20 +1,22 @@
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   datasource:
-    url: jdbc:mysql://localhost:3306/stockdb?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/stockdb?serverTimezone=UTC&characterEncoding=UTF-8
     username: stockuser
     password: stock0818
-  jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    generate-ddl: true
-    show-sql: true
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 logging:
   level:
     org.hibernate.SQL: debug
     #org.hibernate.type: trace
+
 server:
-  port: ${PORT:8080}
+  port: 8080
+
 external:
   api:
     id: PcqeBZmnsgUIVu02TLDJ

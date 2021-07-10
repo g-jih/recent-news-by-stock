@@ -30,9 +30,10 @@ public class NewsService {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }
 
+        int numberOfNews = 5;
 
-        String apiURL = "https://openapi.naver.com/v1/search/news?query=" + keyword;    // json 결과
-        //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
+        String apiURL = "https://openapi.naver.com/v1/search/news?query=" + keyword
+                + "&display=" + String.valueOf(numberOfNews) + "&sort=date";    // json 결과
 
 
         Map<String, String> requestHeaders = new HashMap<>();

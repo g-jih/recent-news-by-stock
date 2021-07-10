@@ -36,4 +36,6 @@ out/
 ### VS Code ###
 .vscode/
 
-resources/application-api-key.properties
+resources/static/assets
+resources/static/css
+resources/static/js
