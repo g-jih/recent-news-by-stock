@@ -1,5 +1,7 @@
 package com.gjih.recentnewsbystock.controller;
+import com.gjih.recentnewsbystock.entity.SavedStock;
 import com.gjih.recentnewsbystock.service.NewsService;
+import com.gjih.recentnewsbystock.service.SavedStockService;
 import com.gjih.recentnewsbystock.service.StockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,7 @@ public class HomeController {
 
     private final NewsService newsService;
     private final StockService stockService;
+    private final SavedStockService savedStockService;
 
     @GetMapping("/")
     public String main(Model model, @Valid String savedStock) {
@@ -28,12 +31,7 @@ public class HomeController {
         model.addAttribute("stocks", stocks);
 
         // 관심 종목 리스트 보내기
-        List<Stock> savedStocks = new ArrayList<>();
-        savedStocks.add(new Stock("삼성전자", "1234"));
-        savedStocks.add(new Stock("카카오", "2345"));
-        savedStocks.add(new Stock("네이버", "3456"));
-        savedStocks.add(new Stock("크래프톤", "4567"));
-        savedStocks.get(0).setSelected(true);
+        List<SavedStock> savedStocks = savedStockService.findAll();
         model.addAttribute("savedStocks", savedStocks);
 
         //log.info("선택된 주식!!!! " + savedStock);

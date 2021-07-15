@@ -17,7 +17,7 @@ public class StockService {
         BufferedReader br = null;
 
         try {
-            File location = new File("C:\\Users\\Jihye\\Desktop\\recentNewsByStock\\src\\main\\java\\com\\gjih\\recentnewsbystock\\service\\stocklist.csv");
+            File location = new File("C:\\Users\\Jihye\\Desktop\\recentNewsByStock\\src\\main\\resources\\static\\assets\\stocklist.csv");
             br = new BufferedReader(new FileReader(location));
             String line = "";
             while ((line = br.readLine()) != null) {

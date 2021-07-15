@@ -31,6 +31,18 @@ public class SavedStockRepository {
                 .getResultList();
     }
 
+    public List<SavedStock> findByMemberIdStockName(Long memberId, String stockName) {
+        return em.createQuery("select s from SavedStock s where s.member = :memberId and s.stockName = :stockName", SavedStock.class)
+                .setParameter("memberId", memberId)
+                .setParameter("stockName", stockName)
+                .getResultList();
+    }
+
+    public List<SavedStock> findAll() {
+        return em.createQuery("select s from SavedStock s", SavedStock.class)
+                .getResultList();
+    }
+
     /**
      * 종목 삭제
      */

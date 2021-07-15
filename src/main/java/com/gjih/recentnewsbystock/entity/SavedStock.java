@@ -20,4 +20,19 @@ public class SavedStock {
     @Column(name = "stock_id")
     private Long stockCode; // 종목코드
 
+    @Column(name = "stork_name")
+    private String stockName;
+
+    // 연관관계 메서드
+    /*public void setMember(Member member) {
+        this.member = member;
+        member.getSavedStocks().add(this);
+    }*/
+
+    // 생성 메서드
+    /*public static SavedStock addSavedStock(Member member, Long code, String name) {
+        SavedStock savedStock = new SavedStock();
+        savedStock.setMember(member);
+    }*/
+
 }

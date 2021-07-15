@@ -26,7 +26,7 @@ public class Member {
     private String password;
 
     @OneToMany(mappedBy = "member")
-    private List<SavedStock> stockCodes = new ArrayList<>();
+    private List<SavedStock> savedStocks = new ArrayList<>();
 
     public Member(String username, String email, String password) {
         this.username = username;

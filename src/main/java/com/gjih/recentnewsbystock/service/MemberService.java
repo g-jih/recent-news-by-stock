@@ -20,8 +20,8 @@ public class MemberService {
      */
     @Transactional
     public Long join(Member member) {
-        //validateDuplicateUsername(member.getUsername()); // 회원 아이디 중복 검증
-        //validateDuplicateEmail(member.getEmail()); // 이메일 중복 검증
+        validateDuplicateUsername(member.getUsername()); // 회원 아이디 중복 검증
+        validateDuplicateEmail(member.getEmail()); // 이메일 중복 검증
         memberRepository.save(member);
         return member.getId();
     }

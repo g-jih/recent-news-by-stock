@@ -1,21 +1,27 @@
 spring:
+  datasource:
+    url:  jdbc:h2:tcp://localhost/~/stock
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: true
-  datasource:
-    url: jdbc:mysql://localhost:3306/stockdb?serverTimezone=UTC&characterEncoding=UTF-8
-    username: stockuser
-    password: stock0818
-    driver-class-name: com.mysql.cj.jdbc.Driver
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+
+  cache:
+    type: redis
+
+  redis:
+    host: localhost
+    port: 6379
 
 logging:
   level:
     org.hibernate.SQL: debug
-    #org.hibernate.type: trace
-
-server:
-  port: 8080
 
 external:
   api:
