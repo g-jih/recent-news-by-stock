@@ -39,3 +39,5 @@ out/
 resources/static/assets
 resources/static/css
 resources/static/js
+
+.properties
