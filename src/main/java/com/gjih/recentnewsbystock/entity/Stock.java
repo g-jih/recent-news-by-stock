@@ -1,12 +1,13 @@
 package com.gjih.recentnewsbystock.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
-public class SavedStock {
+@Getter @Setter
+public class Stock {
 
     @Id
     @GeneratedValue
@@ -18,21 +19,21 @@ public class SavedStock {
     private Member member;
 
     @Column(name = "stock_id")
-    private Long stockCode; // 종목코드
+    private int code; // 종목코드
 
     @Column(name = "stork_name")
-    private String stockName;
+    private String name;
 
     // 연관관계 메서드
     /*public void setMember(Member member) {
         this.member = member;
-        member.getSavedStocks().add(this);
+        member.getStocks().add(this);
     }*/
 
     // 생성 메서드
-    /*public static SavedStock addSavedStock(Member member, Long code, String name) {
-        SavedStock savedStock = new SavedStock();
-        savedStock.setMember(member);
+    /*public static Stock addStock(Member member, Long code, String name) {
+        Stock stock = new Stock();
+        stock.setMember(member);
     }*/
 
 }
